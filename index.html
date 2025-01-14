@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Control Drug Log</title>
+    <style>
+        /* General Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #f8f9fa;
+            color: #333;
+            margin: 0;
+            padding: 0;
+        }
+        header {
+            background-color: #0076a8; /* Matches Alpine Vet's blue */
+            padding: 20px;
+            color: white;
+            text-align: center;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+        }
+        header h1 {
+            font-size: 2.5rem;
+        }
+        main {
+            padding: 40px 20px;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        #searchBar {
+            display: block;
+            margin: 20px auto;
+            padding: 15px;
+            width: 100%;
+            max-width: 600px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            outline: none;
+            transition: border-color 0.3s;
+        }
+        #searchBar:focus {
+            border-color: #0076a8;
+        }
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin-top: 20px;
+        }
+        li {
+            margin: 10px 0;
+            padding: 10px 15px;
+            background: #ffffff;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            transition: transform 0.2s, box-shadow 0.2s;
+            display: flex;               /* Enable Flexbox */
+            justify-content: center;     /* Center horizontally */
+            align-items: center;         /* Center vertically */
+            height: 50px;                /* Set a fixed height for uniform boxes */
+            font-size: 18px;             /* Adjust font size for better readability */
+            font-weight: bold;           /* Make the text bold */
+            text-align: center;          /* Center-align the text */
+        }
+        li:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+        a {
+            text-decoration: none;
+            color: #0076a8;
+            font-weight: bold;
+        }
+        a:hover {
+            text-decoration: underline;
+        }
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: #0076a8;
+            color: white;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <img src="logo.png" alt="Alpine Vet Logo" width="160">
+        <h1>Control Drug Log Dashboard</h1>
+    </header>
+    <main>
+        <input type="text" id="searchBar" placeholder="Search for a drug..." oninput="filterDrugs()">
+        <ul id="drugList">
+            <!-- Example drugs (Replace or generate dynamically using Python) -->
+            <li><a href="https://nvashare.sharepoint.com/:x:/s/AlpineVeterinaryMedicalCentre/EdUk42uJqI5Ag0c3SjIWdGsBA-uvsNs_DAeQjA_-wsa19Q?e=WkDhUW" target="_blank">Buprenorphine HCL</a></li>
+            <li><a href="Drug2.xlsx">Drug2</a></li>
+            <li><a href="Drug3.xlsx">Drug3</a></li>
+            <li><a href="Drug4.xlsx">Drug4</a></li>
+        </ul>
+    </main>
+    <footer>
+        &copy; 2025 Alpine Veterinary Medical Centre. All rights reserved.
+    </footer>
+    <script>
+        function filterDrugs() {
+            const searchQuery = document.getElementById('searchBar').value.toLowerCase();
+            const drugList = document.getElementById('drugList');
+            const drugs = drugList.getElementsByTagName('li');
+
+            for (let i = 0; i < drugs.length; i++) {
+                const drugName = drugs[i].textContent.toLowerCase();
+                if (drugName.includes(searchQuery)) {
+                    drugs[i].style.display = "";
+                } else {
+                    drugs[i].style.display = "none";
+                }
+            }
+        }
+    </script>
+</body>
+</html>
